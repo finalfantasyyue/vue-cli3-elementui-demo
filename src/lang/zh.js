@@ -1,6 +1,6 @@
 export default {
   route: {
-    name: '导航',
+    name: '导航11',
     dashboard: '首页',
     login: '登录',
     components: '组件',
