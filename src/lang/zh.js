@@ -1,7 +1,7 @@
 export default {
   route: {
     name: '导航',
-    dashboard: '首页11',
+    dashboard: '首页',
     login: '登录',
     components: '组件',
     backToTop: '返回顶部',
