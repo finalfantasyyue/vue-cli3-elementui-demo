@@ -13,6 +13,7 @@ export default {
     document: '文档',
     layout: '布局',
     searchNumberEffects: '数字查找特效',
+    canvasComponent: 'canvas组件',
     canvas: '画图'
   }
 }

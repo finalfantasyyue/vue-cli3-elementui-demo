@@ -13,6 +13,9 @@ import i18n from './lang' // Internationalization
 import '@/styles/index.scss'  // 全局样式
 import '@/icons'
 import '@/permission'
+// 页面导出pdf
+import htmlToPdf from '@/utils/htmlToPdf'
+Vue.use(htmlToPdf)
 
 Vue.config.productionTip = false
 

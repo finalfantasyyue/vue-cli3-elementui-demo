@@ -13,6 +13,7 @@ export default {
     playScreen: 'playScreen',
     layout: 'layout',
     searchNumberEffects: 'searchNumberEffects',
+    canvasComponent: 'canvasComponent',
     canvas: 'canvas'
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="canvas">
     <img id="img" src="./logo.png" alt="ddd" style="display: none;">
-    <canvas id="canvas">
+    <canvas id="canvas1">
       浏览器不支持
     </canvas>
     <input type="range" id="scale_draw" min="0.5" max="3.0" step="0.01" value="1.0">
@@ -24,7 +24,7 @@
     },
     methods: {
       init() {
-        const canvas = document.getElementById('canvas')
+        const canvas = document.getElementById('canvas1')
         const waterMarkCanvas = document.getElementById('waterMark')
         const image = document.getElementById('img')
         const slider = document.getElementById('scale_draw')

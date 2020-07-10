@@ -97,11 +97,17 @@ export const asyncRoutes = [
         meta: { title: 'searchNumberEffects' }
       },
       {
+        path: 'canvas',
+        component: () => import('@/views/components/canvas'),
+        name: 'canvasComponent',
+        meta: { title: 'canvasComponent' }
+      },
+      {
         path: 'test',
         component: () => import('@/views/components/test'),
         name: 'test',
-        meta: { title: '不显示菜单' },
-        hidden: true
+        meta: { title: '不显示菜单' }
+        // hidden: true
       }
     ]
   },
