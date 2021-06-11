@@ -37,7 +37,6 @@
   </div>
 </template>
 <script>
-import { clearInterval } from "timers";
 export default {
   name: "top",
   data() {
@@ -48,7 +47,7 @@ export default {
   },
   computed: {},
   watch: {
-    scrollTop(val) {
+    scrollTop() {
       if (this.scrollTop > 200) {
         this.isShowTopBtn = true;
       } else {

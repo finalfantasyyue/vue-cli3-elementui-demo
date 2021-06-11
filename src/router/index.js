@@ -103,11 +103,23 @@ export const asyncRoutes = [
         meta: { title: 'canvasComponent' }
       },
       {
+        path: 'flowChart',
+        component: () => import('@/views/components/flowChart.vue'),
+        name: 'flowChart',
+        meta: { title: 'flowChart' }
+      },
+      {
         path: 'test',
         component: () => import('@/views/components/test'),
         name: 'test',
         meta: { title: '不显示菜单' }
         // hidden: true
+      },
+      {
+        path: 'node-interface',
+        component: () => import('@/views/components/nodeInterface'),
+        name: 'nodeInterface',
+        meta: { title: 'nodeInterface' }
       }
     ]
   },

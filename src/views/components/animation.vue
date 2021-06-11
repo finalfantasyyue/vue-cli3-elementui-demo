@@ -141,6 +141,13 @@
             <div class="box14"></div>
           </el-form-item>
         </el-col>
+        <el-col :span="8">
+          <el-form-item label="vars">
+            <div class="box15">
+              <p>{{ vars }}</p>
+            </div>
+          </el-form-item>
+        </el-col>
       </el-row>
     </el-form>
     <div class="css-new-feature">
@@ -176,6 +183,8 @@ export default {
         password: [{ required: true, message: "请输入密码", trigger: "blur" }]
       },
       index: 0,
+      vars: 'vue vars',
+      opacity: 0.2,
       cy: [
         "新年快乐",
         "恭贺新禧",
@@ -204,6 +213,10 @@ export default {
     });
   },
   mounted() {
+    setInterval(() => {
+      this.opacity >=1 && (this.opacity = 0)
+      this.opacity += 0.2
+    }, 300)
   },
   computed: {},
   methods: {
@@ -248,7 +261,7 @@ export default {
 }
 </style>
 
-<style lang="scss" scoped>
+<style lang="scss" vars="{opacity}" scoped>
 .input-wrapper {
   .form-inline {
     margin: 40px;
@@ -592,6 +605,9 @@ export default {
       border-radius: 50%;
       /*background-image: linear-gradient(to right,transparent 50%,#655 0)*/
       border: 2px solid #f99d05;
+    }
+    .box15 {
+      opacity: var(--opacity)
     }
     @keyframes stretch {
       0%, 40%, 100% {

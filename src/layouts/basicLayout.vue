@@ -105,7 +105,7 @@ export default {
       overflow: hidden;
     }
     .footer-wrapper {
-      position: absolute;
+      /*position: absolute;*/
       height: 60px;
       width: 100%;
       bottom: 0;

@@ -14,6 +14,8 @@ export default {
     layout: '布局',
     searchNumberEffects: '数字查找特效',
     canvasComponent: 'canvas组件',
-    canvas: '画图'
+    canvas: '画图',
+    flowChart: '流程图',
+    nodeInterface: 'node接口'
   }
 }

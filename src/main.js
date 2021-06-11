@@ -13,11 +13,20 @@ import i18n from './lang' // Internationalization
 import '@/styles/index.scss'  // 全局样式
 import '@/icons'
 import '@/permission'
+import myPlugin from  '@/plugins'
+Vue.use(myPlugin)
 // 页面导出pdf
 import htmlToPdf from '@/utils/htmlToPdf'
 Vue.use(htmlToPdf)
 
+// 全局注册toast弹出框
+import toastRegistry from '@/components/toast.js'
+Vue.use(toastRegistry)
+
 Vue.config.productionTip = false
+
+import service from "./utils/request";
+Vue.prototype.$http = service
 
 Vue.use(ElementUI, {
   i18n: (key, value) => i18n.t(key, value)

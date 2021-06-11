@@ -66,7 +66,7 @@ export default {
         this.$refs.menu.open(item)
       })
     },
-    handleOpen (key, keyPath) {
+    handleOpen (key) {
       const index = this.openeds.indexOf(key)
       if (!index) {
         this.openeds.push(key)
@@ -79,6 +79,13 @@ export default {
 }
 </script>
 <style lang='scss' rel='stylesheet/scss' scoped>
-  
+
+</style>
+<style lang="scss">
+.sidebar-wrapper {
+  .el-scrollbar .el-scrollbar__wrap {
+    overflow: auto;
+  }
+}
 </style>
 

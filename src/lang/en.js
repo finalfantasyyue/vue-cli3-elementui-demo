@@ -14,6 +14,8 @@ export default {
     layout: 'layout',
     searchNumberEffects: 'searchNumberEffects',
     canvasComponent: 'canvasComponent',
-    canvas: 'canvas'
+    canvas: 'canvas',
+    flowChart: 'flowChart',
+    nodeInterface: 'nodeInterface'
   }
 }

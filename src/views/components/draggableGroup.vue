@@ -1,31 +1,40 @@
 <template>
   <div class="draggable-group">
     <div class="form-row-group-left">
-      <h2 class='left-title'>组内属性</h2>
+      <h2 class="left-title">组内属性</h2>
       <el-button type="primary" class="add-group" @click="addGroup">add</el-button>
       <el-button type="primary" class="add-group" @click="deleteGroup">delete</el-button>
       <el-row>
-        <el-col :span='12'>
+        <el-col :span="12">
           <div class="form-row-group-folder" v-if="saveGroupSuccess">
-            <li v-for="(item, index) in groups" :key="index" ref="groupList" class="group-folder-list">
+            <li
+              v-for="(item, index) in groups"
+              :key="index"
+              ref="groupList"
+              class="group-folder-list"
+            >
               <i :class="item.iconFolder"></i>
-              <span v-if='!modifyGroupName || modifyGroupFlag !== index' @click='selectGroup(index)' class='span-list'>{{ item.name }}</span>
-              <el-input 
-              v-if='modifyGroupName && modifyGroupFlag === index'
-              v-model='groups[index].name' 
-              class='group-name'
-              ref='modifyGroupNameInupt'
-              @blur='saveGroupName' 
-              @keyup.enter.native='saveGroupName'
+              <span
+                v-if="!modifyGroupName || modifyGroupFlag !== index"
+                @click="selectGroup(index)"
+                class="span-list"
+              >{{ item.name }}</span>
+              <el-input
+                v-if="modifyGroupName && modifyGroupFlag === index"
+                v-model="groups[index].name"
+                class="group-name"
+                ref="modifyGroupNameInupt"
+                @blur="saveGroupName"
+                @keyup.enter.native="saveGroupName"
               ></el-input>
-              <i :class="item.iconEdit" @click='handleModifyGroupName(index)'></i>
-              <draggable 
-                class="list-group" 
-                :list="item.tasks" 
-                v-bind="{group: 'people', animation: 150, ghostClass:'sortable-ghost', scrollSensitivity: 30}" 
+              <i :class="item.iconEdit" @click="handleModifyGroupName(index)"></i>
+              <draggable
+                class="list-group"
+                :list="item.tasks"
+                v-bind="{group: 'people', animation: 150, ghostClass:'sortable-ghost', scrollSensitivity: 30}"
                 @change="log"
                 @end="end"
-                >
+              >
                 <div
                   class="list-group-item"
                   v-for="(element) in item.tasks"
@@ -39,28 +48,33 @@
       <el-row>
         <el-col :span="8">
           <div class="form-row-addGroup" v-if="showGroupInput">
-            <el-input v-model="groupName" placeholder="请输入分组名称" class="form-input" ref='addGroupInput'></el-input>
+            <el-input
+              v-model="groupName"
+              placeholder="请输入分组名称"
+              class="form-input"
+              ref="addGroupInput"
+            ></el-input>
             <i class="el-icon-check" @click="saveGroup"></i>
-            <span class="group-warning" v-if='nullGroupName'>请输入分组名称</span>
+            <span class="group-warning" v-if="nullGroupName">请输入分组名称</span>
           </div>
         </el-col>
       </el-row>
     </div>
     <div class="form-row-group-right">
-      <h2 class='right-title'>非组内属性</h2>
-      <draggable 
-        class="list-group" 
+      <h2 class="right-title">非组内属性</h2>
+      <draggable
+        class="list-group"
         :list="list"
         v-bind="{group: 'people', animation: 150}"
         @change="log"
         @end="end"
-        >
-          <div
-            class="list-group-item"
-            v-for="(element) in list"
-            :key="element.name"
-          >{{ element.name }}</div>
-        </draggable>
+      >
+        <div
+          class="list-group-item"
+          v-for="(element) in list"
+          :key="element.name"
+        >{{ element.name }}</div>
+      </draggable>
     </div>
   </div>
 </template>
@@ -71,7 +85,7 @@ export default {
   name: "draggbaleGroup",
   components: {
     // nestedDraggable,
-    draggable,
+    draggable
   },
   data() {
     return {
@@ -79,9 +93,9 @@ export default {
       saveGroupSuccess: false, // 保存分组
       showGroupInput: false, // 添加分组 input
       modifyGroupName: false,
-      modifyGroupFlag: '', // 修改数据索引
+      modifyGroupFlag: "", // 修改数据索引
       groups: [],
-      groupName: '',
+      groupName: "",
       list: [
         { name: "task 1" },
         { name: "task 2" },
@@ -93,81 +107,89 @@ export default {
     };
   },
   methods: {
-    log (ev) {
-      window.console.log(ev)
+    log(ev) {
+      window.console.log(ev);
     },
-    end () {
-      window.console.log(this.groups)
+    end() {
+      window.console.log(this.groups);
     },
-    selectGroup (index) {
-      this.$refs.groupList.forEach((val) => {
-        val.getElementsByClassName('span-list')[0].classList.remove('active-group-list')
-      })
-      this.$refs.groupList[index].getElementsByClassName('span-list')[0].classList.add('active-group-list')
+    selectGroup(index) {
+      this.$refs.groupList.forEach(val => {
+        val
+          .getElementsByClassName("span-list")[0]
+          .classList.remove("active-group-list");
+      });
+      this.$refs.groupList[index]
+        .getElementsByClassName("span-list")[0]
+        .classList.add("active-group-list");
     },
     // 修改组名
-    handleModifyGroupName (index) {
-      this.modifyGroupFlag = index
-      this.modifyGroupName = true
+    handleModifyGroupName(index) {
+      this.modifyGroupFlag = index;
+      this.modifyGroupName = true;
       this.$nextTick(() => {
-        this.$refs.modifyGroupNameInupt[0].focus()
-      })
+        this.$refs.modifyGroupNameInupt[0].focus();
+      });
     },
-    saveGroupName () {
+    saveGroupName() {
       this.modifyGroupName = false;
     },
     // 新增组
     addGroup() {
-      this.groupName = '';
+      this.groupName = "";
       this.showGroupInput = true;
       // 自动获取焦点
       this.$nextTick(() => {
-        this.$refs.addGroupInput.focus()
-      })
+        this.$refs.addGroupInput.focus();
+      });
     },
     // 删除组
-    deleteGroup () {
+    deleteGroup() {
       if (!this.$refs.groupList) {
         this.$message({
-          type: 'error',
+          type: "error",
           showClose: true,
-          message: '请先添加组'
-        })
-        return false
+          message: "请先添加组"
+        });
+        return false;
       }
-      this.$refs.groupList.forEach((val,index) => {
-        const hasSelect = val.getElementsByClassName('span-list')[0].classList.contains('active-group-list')
+      this.$refs.groupList.forEach((val, index) => {
+        const hasSelect = val
+          .getElementsByClassName("span-list")[0]
+          .classList.contains("active-group-list");
         if (hasSelect) {
-          const task = this.groups[index].tasks.length
+          const task = this.groups[index].tasks.length;
           if (!task) {
             this.$message({
-                type: 'success',
-                message: '删除成功!'
-              });
-            this.groups.splice(index,1)
-          } else {
-            this.$confirm('该组包含组内属性，请移除组内属性再试','提示',{
-              confirmButtonText: '确定',
-              showCancelButton: false,
-              type: 'warning'
-            }).then(() => {
-              return;
-            }).catch(() => {
-              this.$message({
-                type: 'info',
-                message: '已取消删除'
-              });          
+              type: "success",
+              message: "删除成功!"
             });
+            this.groups.splice(index, 1);
+          } else {
+            this.$confirm("该组包含组内属性，请移除组内属性再试", "提示", {
+              confirmButtonText: "确定",
+              showCancelButton: false,
+              type: "warning"
+            })
+              .then(() => {
+                return;
+              })
+              .catch(() => {
+                this.$message({
+                  type: "info",
+                  message: "已取消删除"
+                });
+              });
           }
         }
-      })
+      });
     },
     saveGroup() {
       if (this.groupName !== "") {
         this.groups.push({
           name: this.groupName,
-          iconFolder: 'el-icon-folder',
-          iconEdit: 'el-icon-edit',
+          iconFolder: "el-icon-folder",
+          iconEdit: "el-icon-edit",
           tasks: []
         });
         this.showGroupInput = false;
@@ -183,10 +205,12 @@ export default {
 <style lang='scss' rel='stylesheet/scss' scoped>
 .draggable-group {
   margin: 20px;
-  .form-row-group-right, .form-row-group-left{
+  .form-row-group-right,
+  .form-row-group-left {
     float: left;
     width: 49%;
-    .right-title,.left-ttile {
+    .right-title,
+    .left-ttile {
       border-bottom: 1px solid #a5a5a5;
     }
     .list-group {
