@@ -9,11 +9,11 @@ import 'default-passive-events'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import i18n from './lang' // Internationalization
-
-import '@/styles/index.scss'  // 全局样式
+// 测试
+import '@/styles/index.scss' // 全局样式
 import '@/icons'
 import '@/permission'
-import myPlugin from  '@/plugins'
+import myPlugin from '@/plugins'
 Vue.use(myPlugin)
 // 页面导出pdf
 import htmlToPdf from '@/utils/htmlToPdf'
