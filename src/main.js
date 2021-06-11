@@ -9,7 +9,7 @@ import 'default-passive-events'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import i18n from './lang' // Internationalization
-// 测试
+
 import '@/styles/index.scss' // 全局样式
 import '@/icons'
 import '@/permission'
